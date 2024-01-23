@@ -2,7 +2,7 @@ import java.io.*;
 
 public class GardenGateProblem {
 
-  static public void main(String[] args) {
+  static public void main(String[] args) throws FileNotFoundException {
     RandomAccessFile admin;
     byte init[] = {0};
 
@@ -22,8 +22,9 @@ public class GardenGateProblem {
          }
       } else
          System.out.println("running the top gate");
-    //  Gate counter = new Gate();
-    //  counter.counting();
+
+      Gate counter = new Gate();
+      counter.counting();
     }
   }
 }
