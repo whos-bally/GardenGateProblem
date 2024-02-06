@@ -13,7 +13,7 @@ public class Gate {
         file = new RandomAccessFile("admin.txt", "rw");
         this.gate = location;
     }
-    public void counting(){
+    public void counting() throws IOException {
 
         for (int i = 0; i < MAX_PEOPLE; i++) {
             System.out.println("\nGate counter: " + (i+1));
@@ -37,12 +37,9 @@ public class Gate {
                     Thread.sleep(200);
                     file.seek(1);
                 }
-
+                
                 file.write((byte) count);
 
-                if (i == (MAX_PEOPLE-1)){
-                    file.close();
-                }
             }
             catch (IOException e) {
                 System.out.println("File access error");
@@ -50,6 +47,16 @@ public class Gate {
                 throw new RuntimeException(e);
             }
         }
+
+        file.seek(0);
+        int btmCounter = file.read();
+
+        file.seek(1);
+        int topCounter = file.read();
+        file.close();
+        System.out.printf("Final count %d", (btmCounter+topCounter));
+
+
     }
 
 

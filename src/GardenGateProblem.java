@@ -2,7 +2,7 @@ import java.io.*;
 
 public class GardenGateProblem {
 
-    static public void main(String[] args) throws FileNotFoundException {
+    static public void main(String[] args) throws IOException {
         RandomAccessFile admin;
         byte init[] = {0,0};
 
